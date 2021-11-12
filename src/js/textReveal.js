@@ -2,6 +2,7 @@ import { gsap } from 'gsap';
 
 export class TextReveal {
     constructor(el) {
+        console.log(el);
         this.DOM = {
             outer: el,
             inner: Array.isArray(el) ? el.map(outer => outer.querySelector('.oh__inner')) : el.querySelector('.oh__inner')

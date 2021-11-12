@@ -1,8 +1,8 @@
 import { preloadImages } from './utils';
-import { Menu } from './menu';
+//import { Menu } from './menu';
 import { TextReveal } from './textReveal';
 import { TextLinesReveal } from './textLinesReveal';
-import { ImgReveal } from './imgReveal';
+//import { ImgReveal } from './imgReveal';
 import { gsap } from 'gsap';
 
 // DOM elements:
@@ -17,7 +17,7 @@ DOM.menuWrap = document.querySelector('.menu');
 DOM.textContent = {
     heading: document.querySelector('.heading'),
     primary: document.querySelector('.content-primary'),
-    secondary: document.querySelector('.content-secondary')
+    //secondary: document.querySelector('.content-secondary')
 };
 // image
 DOM.img = document.querySelector('.deco');
@@ -26,16 +26,17 @@ DOM.img = document.querySelector('.deco');
 let state = 0;
 
 // text lines reveal obj
-const textLinesReveal = new TextLinesReveal([DOM.textContent.primary, DOM.textContent.secondary]);
+//const textLinesReveal = new TextLinesReveal([DOM.textContent.primary, DOM.textContent.secondary]);
+const textLinesReveal = new TextLinesReveal([DOM.textContent.primary]);
 
 // Image reveal obj
-const imgReveal = new ImgReveal(DOM.img);
+//const imgReveal = new ImgReveal(DOM.img);
 
 // Other text animations
-const textReveal = new TextReveal([DOM.textContent.heading, DOM.menuCtrl]);
+const textReveal = new TextReveal([DOM.textContent.heading]);
 
 // Menu
-const menu = new Menu(DOM.menuWrap);
+//const menu = new Menu(DOM.menuWrap);
 
 
 // show the initial texts and images
@@ -44,7 +45,7 @@ const showContent = () => {
     // show texts (slide in)
     textLinesReveal.in();
     // show image
-    imgReveal.in();
+    //imgReveal.in();
     // also show frame
     toggleFrame();
 };
@@ -56,7 +57,7 @@ const hideContent = () => {
     // hide texts (lines)
     textLinesReveal.out();
     // hide image(s)
-    imgReveal.out();
+    i//mgReveal.out();
     // also hide frame
     toggleFrame();
 };
@@ -71,20 +72,20 @@ const toggleFrame = () => {
 };
 
 // Clicking the menu button will open the menu
-DOM.menuCtrl.addEventListener('click', () => {
-    if ( state !== 0 ) return;
-    state = 1;
-    hideContent();
-    menu.open();
-});
+// DOM.menuCtrl.addEventListener('click', () => {
+//     if ( state !== 0 ) return;
+//     state = 1;
+//     hideContent();
+//     menu.open();
+// });
 
 // Close the menu and back to initial page
-menu.DOM.closeCtrl.addEventListener('click', () => {
-    if ( state !== 1 ) return;
-    state = 0;
-    showContent();
-    menu.close();
-});
+// menu.DOM.closeCtrl.addEventListener('click', () => {
+//     if ( state !== 1 ) return;
+//     state = 0;
+//     showContent();
+//     menu.close();
+// });
 
 // Preload images
 preloadImages('.deco__img, .panel__img').then(() => {

@@ -460,10 +460,10 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"3auaO":[function(require,module,exports) {
 var _utils = require("./utils");
-var _menu = require("./menu");
+//import { Menu } from './menu';
 var _textReveal = require("./textReveal");
 var _textLinesReveal = require("./textLinesReveal");
-var _imgReveal = require("./imgReveal");
+//import { ImgReveal } from './imgReveal';
 var _gsap = require("gsap");
 // DOM elements:
 let DOM = {
@@ -476,34 +476,32 @@ DOM.menuWrap = document.querySelector('.menu');
 // text content elements
 DOM.textContent = {
     heading: document.querySelector('.heading'),
-    primary: document.querySelector('.content-primary'),
-    secondary: document.querySelector('.content-secondary')
+    primary: document.querySelector('.content-primary')
 };
 // image
 DOM.img = document.querySelector('.deco');
 // page state
 let state = 0;
 // text lines reveal obj
+//const textLinesReveal = new TextLinesReveal([DOM.textContent.primary, DOM.textContent.secondary]);
 const textLinesReveal = new _textLinesReveal.TextLinesReveal([
-    DOM.textContent.primary,
-    DOM.textContent.secondary
+    DOM.textContent.primary
 ]);
 // Image reveal obj
-const imgReveal = new _imgReveal.ImgReveal(DOM.img);
+//const imgReveal = new ImgReveal(DOM.img);
 // Other text animations
 const textReveal = new _textReveal.TextReveal([
-    DOM.textContent.heading,
-    DOM.menuCtrl
+    DOM.textContent.heading
 ]);
 // Menu
-const menu = new _menu.Menu(DOM.menuWrap);
+//const menu = new Menu(DOM.menuWrap);
 // show the initial texts and images
 const showContent = ()=>{
     textReveal.in();
     // show texts (slide in)
     textLinesReveal.in();
     // show image
-    imgReveal.in();
+    //imgReveal.in();
     // also show frame
     toggleFrame();
 };
@@ -513,8 +511,6 @@ const hideContent = ()=>{
     textReveal.out();
     // hide texts (lines)
     textLinesReveal.out();
-    // hide image(s)
-    imgReveal.out();
     // also hide frame
     toggleFrame();
 };
@@ -527,19 +523,19 @@ const toggleFrame = ()=>{
     });
 };
 // Clicking the menu button will open the menu
-DOM.menuCtrl.addEventListener('click', ()=>{
-    if (state !== 0) return;
-    state = 1;
-    hideContent();
-    menu.open();
-});
+// DOM.menuCtrl.addEventListener('click', () => {
+//     if ( state !== 0 ) return;
+//     state = 1;
+//     hideContent();
+//     menu.open();
+// });
 // Close the menu and back to initial page
-menu.DOM.closeCtrl.addEventListener('click', ()=>{
-    if (state !== 1) return;
-    state = 0;
-    showContent();
-    menu.close();
-});
+// menu.DOM.closeCtrl.addEventListener('click', () => {
+//     if ( state !== 1 ) return;
+//     state = 0;
+//     showContent();
+//     menu.close();
+// });
 // Preload images
 _utils.preloadImages('.deco__img, .panel__img').then(()=>{
     // Remove loader (loading class)
@@ -548,7 +544,7 @@ _utils.preloadImages('.deco__img, .panel__img').then(()=>{
     showContent();
 });
 
-},{"./utils":"fIYUT","gsap":"2aTR0","./textLinesReveal":"3SP0K","./menu":"cyRgG","./textReveal":"e6r42","./imgReveal":"9cVz6"}],"fIYUT":[function(require,module,exports) {
+},{"./utils":"fIYUT","gsap":"2aTR0","./textLinesReveal":"3SP0K","./textReveal":"e6r42"}],"fIYUT":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "preloadImages", ()=>preloadImages
@@ -5517,84 +5513,7 @@ var SplitType1 = /*#__PURE__*/ function() {
 }();
 exports.default = SplitType1;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"cyRgG":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Menu", ()=>Menu
-);
-var _textReveal = require("./textReveal");
-var _details = require("./details");
-class Menu {
-    constructor(el){
-        this.DOM = {
-            el: el,
-            items: [
-                ...el.querySelectorAll('.menu__item')
-            ],
-            links: [
-                ...el.querySelectorAll('.menu__item-link')
-            ],
-            closeCtrl: el.querySelector('.close--menu'),
-            // .details HTML elements (one per menu item)
-            detailsEl: [
-                ...el.querySelectorAll('.menu__item-link')
-            ].map((item)=>document.querySelector(item.href.substring(item.href.indexOf('#')))
-            ),
-            // close details/images page
-            closeDetailsCtrl: document.querySelector('.details-wrap > .close--details')
-        };
-        // text reveal animations (both the close control and the menu items will slide in/out)
-        this.textReveal = new _textReveal.TextReveal([
-            this.DOM.closeCtrl,
-            ...this.DOM.items
-        ]);
-        // Details instances
-        this.detailsInstances = [];
-        this.DOM.detailsEl.forEach((detailsEl)=>this.detailsInstances.push(new _details.Details(detailsEl, this.DOM.closeDetailsCtrl))
-        );
-        this.initEvents();
-    }
-    // open the menu (animate the menu items in)
-    open() {
-        this.DOM.el.classList.add('menu--open');
-        // show menu items and show close ctrl
-        this.textReveal.in();
-    }
-    // close the menu (animate the menu items out)
-    close() {
-        this.textReveal.out().then(()=>this.DOM.el.classList.remove('menu--open')
-        );
-    }
-    initEvents() {
-        // clicking a menu link will open the gallery
-        this.DOM.links.forEach((link, pos)=>{
-            link.addEventListener('click', (ev)=>{
-                ev.preventDefault();
-                this.openDetails(pos);
-            });
-        });
-        this.DOM.closeDetailsCtrl.addEventListener('click', ()=>this.closeDetails()
-        );
-    }
-    openDetails(pos) {
-        // save position
-        this.menuItemCurrent = pos;
-        // show the details
-        this.detailsInstances[this.menuItemCurrent].open();
-        // close the menu (animate the menu items out)
-        this.close();
-    }
-    closeDetails() {
-        if (this.menuItemCurrent === -1) return;
-        // open the menu (animate the menu items in)
-        this.open();
-        this.detailsInstances[this.menuItemCurrent].close();
-        // reset
-        this.menuItemCurrent = -1;
-    }
-}
-
-},{"./textReveal":"e6r42","./details":"1jtff","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"e6r42":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"e6r42":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "TextReveal", ()=>TextReveal
@@ -5602,6 +5521,7 @@ parcelHelpers.export(exports, "TextReveal", ()=>TextReveal
 var _gsap = require("gsap");
 class TextReveal {
     constructor(el){
+        console.log(el);
         this.DOM = {
             outer: el,
             inner: Array.isArray(el) ? el.map((outer)=>outer.querySelector('.oh__inner')
@@ -5641,144 +5561,6 @@ class TextReveal {
     }
 }
 
-},{"gsap":"2aTR0","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"1jtff":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Details", ()=>Details
-);
-var _textReveal = require("./textReveal");
-var _textLinesReveal = require("./textLinesReveal");
-var _gsap = require("gsap");
-var _gsapDefault = parcelHelpers.interopDefault(_gsap);
-class Details {
-    constructor(el, closeDetailsCtrl){
-        this.DOM = {
-            el: el,
-            images: el.querySelectorAll('.panel > .panel__img'),
-            title: el.querySelector('.details__content > .details__content-title'),
-            text: el.querySelector('.details__content > .details__content-text'),
-            link: el.querySelector('.details__content > .details__content-link'),
-            closeDetailsCtrl: closeDetailsCtrl
-        };
-        // textLinesReveal obj (this.DOM.text animation)
-        this.textLinesReveal = new _textLinesReveal.TextLinesReveal(this.DOM.text);
-        // TextReveal obj (this.DOM.title and this.DOM.link animation)
-        this.textReveal = new _textReveal.TextReveal([
-            this.DOM.title,
-            this.DOM.link,
-            this.DOM.closeDetailsCtrl
-        ]);
-    }
-    open() {
-        this.DOM.el.classList.add('details--open');
-        document.body.classList.add('state-details');
-        this.textLinesReveal.in();
-        this.textReveal.in();
-        _gsapDefault.default.killTweensOf(this.DOM.images);
-        _gsapDefault.default.timeline({
-            defaults: {
-                duration: 2,
-                ease: 'expo'
-            }
-        }).set(this.DOM.images, {
-            opacity: 0,
-            y: '150%'
-        }).to(this.DOM.images, {
-            opacity: 1,
-            y: '0%',
-            stagger: 0.02
-        });
-    }
-    close() {
-        this.textLinesReveal.out();
-        this.textReveal.out();
-        _gsapDefault.default.killTweensOf(this.DOM.images);
-        _gsapDefault.default.timeline({
-            defaults: {
-                duration: 0.5,
-                ease: 'power2'
-            },
-            onComplete: ()=>{
-                this.DOM.el.classList.remove('details--open');
-                document.body.classList.remove('state-details');
-            }
-        }).to(this.DOM.images, {
-            opacity: 0,
-            y: '-150%',
-            stagger: 0.01
-        });
-    }
-}
-
-},{"./textReveal":"e6r42","./textLinesReveal":"3SP0K","gsap":"2aTR0","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"9cVz6":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "ImgReveal", ()=>ImgReveal
-);
-var _splitType = require("split-type");
-var _splitTypeDefault = parcelHelpers.interopDefault(_splitType);
-var _utils = require("./utils");
-var _gsap = require("gsap");
-class ImgReveal {
-    constructor(el){
-        this.DOM = {
-            el: el,
-            outerImages: el.querySelectorAll('.deco__img-wrap'),
-            innerImages: el.querySelectorAll('.deco__img')
-        };
-    }
-    in() {
-        _gsap.gsap.killTweensOf([
-            this.DOM.innerImages,
-            this.DOM.outerImages,
-            this.DOM.el
-        ]);
-        return _gsap.gsap.timeline({
-            defaults: {
-                duration: 1.2,
-                ease: 'expo'
-            }
-        }).set(this.DOM.el, {
-            y: '10%'
-        }).set(this.DOM.innerImages, {
-            y: '-101%'
-        }).set(this.DOM.outerImages, {
-            y: '101%'
-        }).to([
-            this.DOM.innerImages,
-            this.DOM.outerImages,
-            this.DOM.el
-        ], {
-            y: '0%'
-        });
-    }
-    out() {
-        _gsap.gsap.killTweensOf([
-            this.DOM.innerImages,
-            this.DOM.outerImages,
-            this.DOM.el
-        ]);
-        return _gsap.gsap.timeline({
-            defaults: {
-                duration: 0.7,
-                ease: 'power2'
-            }
-        }).to([
-            this.DOM.innerImages
-        ], {
-            y: '101%'
-        }).to([
-            this.DOM.outerImages
-        ], {
-            y: '-101%'
-        }, 0).to([
-            this.DOM.el
-        ], {
-            y: '-10%'
-        }, 0);
-    }
-}
-
-},{"split-type":"6KwHJ","./utils":"fIYUT","gsap":"2aTR0","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["cSv3F","3auaO"], "3auaO", "parcelRequire7b68")
+},{"gsap":"2aTR0","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["cSv3F","3auaO"], "3auaO", "parcelRequire7b68")
 
 //# sourceMappingURL=index.8b7fb9b3.js.map

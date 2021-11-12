@@ -10,8 +10,8 @@
 
 body {
 	margin: 0;
-	--color-text: #111;
-	--color-bg: #F7F5F3;
+	--color-text: #fff;
+	--color-bg: #111;
 	--color-link: #999;
 	--color-link-hover: #000;
 	--font-size-xlarge: 2rem;
@@ -175,7 +175,7 @@ main {
 
 .heading {
 	grid-area: heading;
-	font-size: var(--font-size-large);
+	font-size: var(--font-size-small);
 	margin: 0 0 2rem 0;
 	font-weight: normal;
 	align-self: start;
@@ -189,7 +189,7 @@ main {
 .content-primary {
 	grid-area: content;
 	line-height: 1;
-	font-size: var(--font-size-large);
+	font-size: var(--font-size-small);
 }
 
 .content-secondary {
@@ -197,7 +197,6 @@ main {
 	line-height: 1;
 	margin: 0;
 	align-self: end;
-	font-size: var(--font-size-small);
 	max-width: 400px;
 }
 
@@ -434,7 +433,7 @@ main {
 }
 
 .details__content {
-	padding: 1.5rem;
+	padding: 5.5rem;
 	margin: 0 auto;
 	position: relative;
 }
