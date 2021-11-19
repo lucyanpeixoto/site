@@ -65,13 +65,12 @@ body {
 
 a {
 	text-decoration: underline;
-	color: var(--color-link);
+	color: var(--color-text);
 	outline: none;
 }
 
 a:hover {
-	text-decoration: none;
-	color: var(--color-link-hover);
+	color: var(--color-text);
 	outline: none;
 }
 
@@ -111,7 +110,7 @@ a:focus-visible {
 }
 
 main {
-	padding: 1.5rem;
+	padding: 4.5rem;
 	display: grid;
 	height: 100vh;
 	align-content: space-between;
@@ -175,7 +174,7 @@ main {
 
 .heading {
 	grid-area: heading;
-	font-size: var(--font-size-small);
+	font-size: var(--font-size-medium);
 	margin: 0 0 2rem 0;
 	font-weight: normal;
 	align-self: start;
@@ -189,7 +188,7 @@ main {
 .content-primary {
 	grid-area: content;
 	line-height: 1;
-	font-size: var(--font-size-small);
+	font-size: var(--font-size-medium);
 }
 
 .content-secondary {
@@ -198,6 +197,10 @@ main {
 	margin: 0;
 	align-self: end;
 	max-width: 400px;
+}
+
+.content-secondary span {
+	display: block
 }
 
 .deco {
@@ -469,7 +472,7 @@ main {
 		overflow: hidden;
 		--font-size-xlarge: 11vh;
 		--font-size-large: 3.5vw;
-		--font-size-medium: 2.75vw;
+		--font-size-medium: 2.0vw;
 		--font-size-small: 1.65vw;
 	}
 	main {

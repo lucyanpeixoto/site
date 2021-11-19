@@ -17,7 +17,7 @@ DOM.menuWrap = document.querySelector('.menu');
 DOM.textContent = {
     heading: document.querySelector('.heading'),
     primary: document.querySelector('.content-primary'),
-    //secondary: document.querySelector('.content-secondary')
+    secondary: document.querySelector('.content-secondary')
 };
 // image
 DOM.img = document.querySelector('.deco');
@@ -26,14 +26,14 @@ DOM.img = document.querySelector('.deco');
 let state = 0;
 
 // text lines reveal obj
-//const textLinesReveal = new TextLinesReveal([DOM.textContent.primary, DOM.textContent.secondary]);
-const textLinesReveal = new TextLinesReveal([DOM.textContent.primary]);
+//const textLinesReveal = new TextLinesReveal([DOM.textContent.primary]);
+//const textLinesReveal = new TextLinesReveal([DOM.textContent.primary]);
 
 // Image reveal obj
 //const imgReveal = new ImgReveal(DOM.img);
 
 // Other text animations
-const textReveal = new TextReveal([DOM.textContent.heading]);
+//const textReveal = new TextReveal([DOM.textContent.heading, DOM.textContent.primary, DOM.textContent.secondary]);
 
 // Menu
 //const menu = new Menu(DOM.menuWrap);
