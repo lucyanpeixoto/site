@@ -4,7 +4,7 @@ Site pessoal feito com [Astro](https://astro.build), gerado como HTML estático,
 
 ## Requisitos
 
-- Node.js 22.12+ (ver `.nvmrc`)
+- Node.js 22.x (22.12+) (ver `.nvmrc`)
 
 ## Desenvolvimento
 
