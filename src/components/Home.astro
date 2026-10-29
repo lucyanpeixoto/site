@@ -19,8 +19,8 @@ const title = 'Lucyan Peixoto';
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content={t.description} />
 		<meta name="color-scheme" content="dark light" />
-		<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)" />
-		<meta name="theme-color" content="#f4f3ef" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#0f0f0f" media="(prefers-color-scheme: dark)" />
+		<meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={t.description} />
 		<meta property="og:type" content="website" />
@@ -58,14 +58,14 @@ const title = 'Lucyan Peixoto';
 			<h1 class="heading">{t.greeting}</h1>
 
 			<p class="content-primary">
-				{t.intro[0]} <a href="https://doity.com.br" target="_blank" rel="noopener">Doity</a>
-				{t.intro[1]}
+				{t.intro[0]}{' '}
+				<a href="https://doity.com.br" target="_blank" rel="noopener">Doity</a>{t.intro[1]}
 			</p>
 
 			<p class="content-secondary">
-				<span>{t.contact} <a href="mailto:lucyan@outlook.com">lucyan@outlook.com</a></span>
+				<span>{t.contact}{' '}<a href="mailto:lucyan@outlook.com">lucyan@outlook.com</a></span>
 				<span>
-					{t.linkedin}
+					{t.linkedin}{' '}
 					<a href="https://www.linkedin.com/in/lucyanpeixoto/" target="_blank" rel="noopener">Linkedin</a>
 				</span>
 			</p>

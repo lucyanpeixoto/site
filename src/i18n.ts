@@ -15,7 +15,7 @@ export const content = {
 		greeting: 'Oi, eu sou Lucyan',
 		intro: [
 			`Software engineer brasileiro com ${years} anos de experiência e morando na terra de Zumbi dos Palmares — Atualmente como tech lead na`,
-			'busco desenvolver e escalar produtos digitais com a melhor experiência para o usuário.',
+			' busco desenvolver e escalar produtos digitais com a melhor experiência para o usuário.',
 		],
 		contact: 'Entre em contato no',
 		linkedin: 'Você pode me encontrar também no',
@@ -31,7 +31,7 @@ export const content = {
 		greeting: "Hi, I'm Lucyan",
 		intro: [
 			`Brazilian software engineer with ${years} years of experience, living in the land of Zumbi dos Palmares — Currently a tech lead at`,
-			'where I build and scale digital products with the best possible user experience.',
+			', where I build and scale digital products with the best possible user experience.',
 		],
 		contact: 'Get in touch at',
 		linkedin: 'You can also find me on',
