@@ -55,9 +55,8 @@ const title = 'Lucyan Peixoto';
 				</button>
 			</nav>
 
-			<h1 class="heading">{t.greeting}</h1>
-
 			<div class="content-primary">
+				<h1 class="heading">{t.greeting}</h1>
 				<p class="content-lead">{t.lead}</p>
 				{t.paragraphs.map((p) => <p set:html={p} />)}
 				<p class="content-closing">{t.closing}</p>
