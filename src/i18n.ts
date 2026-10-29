@@ -32,7 +32,6 @@ export const content = {
 		},
 		switchLanguage: { label: 'en', title: 'Read in English' },
 		themeTitle: 'Alternar tema',
-		builtWith: 'Feito com Astro',
 	},
 	en: {
 		htmlLang: 'en',
@@ -56,6 +55,5 @@ export const content = {
 		},
 		switchLanguage: { label: 'br', title: 'Ler em português' },
 		themeTitle: 'Toggle theme',
-		builtWith: 'Built with Astro',
 	},
 } satisfies Record<Locale, unknown>;
