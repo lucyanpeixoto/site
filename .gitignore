@@ -1,5 +1,17 @@
-/node_modules
-/.cache
-/parcel-cache
-/.parcel-cache
-package-lock.json
+# build
+dist/
+.astro/
+.vercel/
+
+# dependências
+node_modules/
+
+# logs
+npm-debug.log*
+
+# ambiente
+.env
+.env.*
+
+# macOS
+.DS_Store

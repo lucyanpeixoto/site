@@ -1,48 +1,41 @@
-# Superfluid: Content Preview and Menu Animation
+# lucyanpeixoto
 
-A proof-of-concept reveal animation experiment on typographic elements as repeating pattern for a website design.
+Site pessoal feito com [Astro](https://astro.build), gerado como HTML estático, em português e inglês, com tema claro/escuro e publicado na [Vercel](https://vercel.com).
 
-![Image Title](https://tympanus.net/codrops/wp-content/uploads/2021/07/Superfluid_feat.jpg)
+## Requisitos
 
-[Article on Codrops](https://tympanus.net/codrops/?p=55661)
+- Node.js 22.12+ (ver `.nvmrc`)
 
-[Demo](http://tympanus.net/Development/SuperfluidLayout/)
+## Desenvolvimento
 
-
-## Installation
-
-Install dependencies:
-
-```
+```sh
 npm install
+npm run dev      # http://localhost:4321
+npm run build    # gera ./dist
+npm run preview  # serve o build localmente
 ```
 
-Compile the code for development and start a local server:
+## Estrutura
 
 ```
-npm start
+public/            arquivos servidos como estão (favicon, robots.txt)
+src/pages/         rotas: / (pt-BR) e /en/ (inglês)
+src/components/    Home.astro (layout único das duas línguas)
+src/i18n.ts        textos em PT e EN
+src/styles/        CSS global
+vercel.json        headers de segurança e cache
 ```
 
-Create the build:
+## Deploy
 
+Importe o repositório na Vercel — o framework Astro é detectado automaticamente
+(build `npm run build`, saída `dist`). Ou via CLI:
+
+```sh
+npx vercel        # preview
+npx vercel --prod # produção
 ```
-npm run build
-```
 
-## Credits
+## Créditos
 
-- Images from [Unsplash](https://unsplash.com/)
-
-## Misc
-
-Follow Codrops: [Twitter](http://www.twitter.com/codrops), [Facebook](http://www.facebook.com/codrops), [GitHub](https://github.com/codrops), [Instagram](https://www.instagram.com/codropsss/)
-
-## License
-[MIT](LICENSE)
-
-Made with :blue_heart:  by [Codrops](http://www.codrops.com)
-
-
-
-
-
+Layout derivado do [Superfluid Layout](https://github.com/codrops/SuperfluidLayout) da Codrops (MIT).
