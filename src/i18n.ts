@@ -15,35 +15,61 @@ export const content = {
 		ogLocale: 'pt_BR',
 		path: '/',
 		description: `Engenheiro de Software e Tech Lead com mais de ${years} anos de experiência construindo e escalando produtos digitais. Tech Lead na Doity e cofundador da Integrabot.ai.`,
-		greeting: 'Olá, eu sou Lucyan Peixoto.',
-		lead: `Engenheiro de Software e Tech Lead com mais de ${years} anos de experiência construindo, evoluindo e escalando produtos digitais.`,
-		paragraphs: [
-			`Atualmente, lidero iniciativas de engenharia na ${doity}, conectando decisões técnicas, estratégia de produto e desenvolvimento de equipes para transformar desafios complexos em soluções confiáveis, eficientes e escaláveis.`,
-			`Também sou cofundador da ${integrabot}, onde exploro o potencial da inteligência artificial para criar produtos e automatizar processos de negócio.`,
-		],
-		closing:
-			'De União dos Palmares, Alagoas, para qualquer lugar onde boas ideias possam se transformar em produtos reais.',
-		contact: 'Entre em contato no',
-		linkedin: 'Você pode me encontrar também no',
-		switchLanguage: { label: 'EN', title: 'Read in English' },
-		theme: { toLight: 'Claro', toDark: 'Escuro', title: 'Alternar tema' },
+		role: 'Engenheiro de Software & Tech Lead',
+		tagline: 'Construindo, evoluindo e escalando produtos digitais. De União dos Palmares, Alagoas.',
+		about: {
+			title: 'Sobre',
+			paragraphs: [
+				`Engenheiro de Software e Tech Lead com mais de ${years} anos de experiência construindo, evoluindo e escalando produtos digitais.`,
+				`Atualmente, lidero iniciativas de engenharia na ${doity}, conectando decisões técnicas, estratégia de produto e desenvolvimento de equipes para transformar desafios complexos em soluções confiáveis, eficientes e escaláveis.`,
+				`Também sou cofundador da ${integrabot}, onde exploro o potencial da inteligência artificial para criar produtos e automatizar processos de negócio.`,
+				'De União dos Palmares, Alagoas, para qualquer lugar onde boas ideias possam se transformar em produtos reais.',
+			],
+		},
+		now: {
+			title: 'Atualmente',
+			items: [
+				{ name: 'Doity', url: 'https://doity.com.br', role: 'Tech Lead' },
+				{ name: 'Integrabot.ai', url: 'https://integrabot.ai', role: 'Cofundador' },
+			],
+		},
+		contact: {
+			title: 'Contato',
+			text: 'Quer conversar sobre um projeto ou uma ideia? Me mande um e-mail em',
+		},
+		switchLanguage: { label: 'en', title: 'Read in English' },
+		themeTitle: 'Alternar tema',
+		builtWith: 'Feito com Astro',
 	},
 	en: {
 		htmlLang: 'en',
 		ogLocale: 'en_US',
 		path: '/en/',
 		description: `Software Engineer and Tech Lead with over ${years} years of experience building and scaling digital products. Tech Lead at Doity and co-founder of Integrabot.ai.`,
-		greeting: "Hi, I'm Lucyan Peixoto.",
-		lead: `Software Engineer and Tech Lead with over ${years} years of experience building, evolving and scaling digital products.`,
-		paragraphs: [
-			`I currently lead engineering initiatives at ${doity}, connecting technical decisions, product strategy and team development to turn complex challenges into reliable, efficient and scalable solutions.`,
-			`I'm also a co-founder of ${integrabot}, where I explore the potential of artificial intelligence to build products and automate business processes.`,
-		],
-		closing:
-			'From União dos Palmares, Alagoas, Brazil, to anywhere good ideas can become real products.',
-		contact: 'Get in touch at',
-		linkedin: 'You can also find me on',
-		switchLanguage: { label: 'PT', title: 'Ler em português' },
-		theme: { toLight: 'Light', toDark: 'Dark', title: 'Toggle theme' },
+		role: 'Software Engineer & Tech Lead',
+		tagline: 'Building, evolving and scaling digital products. From União dos Palmares, Alagoas, Brazil.',
+		about: {
+			title: 'About',
+			paragraphs: [
+				`Software Engineer and Tech Lead with over ${years} years of experience building, evolving and scaling digital products.`,
+				`I currently lead engineering initiatives at ${doity}, connecting technical decisions, product strategy and team development to turn complex challenges into reliable, efficient and scalable solutions.`,
+				`I'm also a co-founder of ${integrabot}, where I explore the potential of artificial intelligence to build products and automate business processes.`,
+				'From União dos Palmares, Alagoas, Brazil, to anywhere good ideas can become real products.',
+			],
+		},
+		now: {
+			title: 'Currently',
+			items: [
+				{ name: 'Doity', url: 'https://doity.com.br', role: 'Tech Lead' },
+				{ name: 'Integrabot.ai', url: 'https://integrabot.ai', role: 'Co-founder' },
+			],
+		},
+		contact: {
+			title: 'Contact',
+			text: 'Want to talk about a project or an idea? Send me an email at',
+		},
+		switchLanguage: { label: 'br', title: 'Ler em português' },
+		themeTitle: 'Toggle theme',
+		builtWith: 'Built with Astro',
 	},
 } satisfies Record<Locale, unknown>;

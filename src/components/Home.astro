@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Social from './Social.astro';
 import { content, locales, type Locale } from '../i18n';
 
 interface Props {
@@ -9,7 +10,7 @@ interface Props {
 const { locale } = Astro.props;
 const t = content[locale];
 const otherLocale = locales.find((l) => l !== locale)!;
-const title = 'Lucyan Peixoto';
+const name = 'Lucyan Peixoto';
 ---
 
 <!doctype html>
@@ -18,17 +19,20 @@ const title = 'Lucyan Peixoto';
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content={t.description} />
-		<meta name="color-scheme" content="dark light" />
-		<meta name="theme-color" content="#0f0f0f" media="(prefers-color-scheme: dark)" />
-		<meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)" />
-		<meta property="og:title" content={title} />
+		<meta name="color-scheme" content="light dark" />
+		<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+		<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+		<meta property="og:title" content={`${name} — ${t.role}`} />
 		<meta property="og:description" content={t.description} />
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content={t.ogLocale} />
 		{locales.map((l) => <link rel="alternate" hreflang={content[l].htmlLang} href={content[l].path} />)}
 		<link rel="alternate" hreflang="x-default" href="/" />
 		<link rel="icon" href="/favicon.ico" />
-		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+		<title>{`${name} — ${t.role}`}</title>
 		<!-- Aplica o tema antes da primeira pintura para evitar flash -->
 		<script is:inline>
 			(() => {
@@ -37,43 +41,83 @@ const title = 'Lucyan Peixoto';
 					theme = localStorage.getItem('theme');
 				} catch {}
 				if (theme !== 'light' && theme !== 'dark') {
-					theme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+					theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 				}
 				document.documentElement.dataset.theme = theme;
 			})();
 		</script>
 	</head>
 	<body>
-		<main>
-			<nav class="menu">
-				<a class="menu-link" href={content[otherLocale].path} hreflang={content[otherLocale].htmlLang} title={t.switchLanguage.title}>
-					{t.switchLanguage.label}
-				</a>
-				<button class="menu-link theme-toggle" type="button" title={t.theme.title}>
-					<span class="theme-toggle__to-light">{t.theme.toLight}</span>
-					<span class="theme-toggle__to-dark">{t.theme.toDark}</span>
-				</button>
-			</nav>
+		<div class="page">
+			<header class="header">
+				<h1 class="name">{name}</h1>
+				<p class="role">{t.role}</p>
+				<p class="tagline">{t.tagline}</p>
+				<Social />
+				<nav class="nav">
+					<a href="#about">{t.about.title}</a>
+					<a href="#now">{t.now.title}</a>
+					<a href="#contact">{t.contact.title}</a>
+					<a
+						class="chip"
+						href={content[otherLocale].path}
+						hreflang={content[otherLocale].htmlLang}
+						title={t.switchLanguage.title}
+					>
+						{t.switchLanguage.label}
+					</a>
+					<button class="chip theme-toggle" type="button" title={t.themeTitle} aria-label={t.themeTitle}>
+						<svg class="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+							<circle cx="12" cy="12" r="4"></circle>
+							<path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+						</svg>
+						<svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+							<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+						</svg>
+					</button>
+				</nav>
+			</header>
 
-			<div class="content-primary">
-				<h1 class="heading">{t.greeting}</h1>
-				<p class="content-lead">{t.lead}</p>
-				{t.paragraphs.map((p) => <p set:html={p} />)}
-				<p class="content-closing">{t.closing}</p>
-			</div>
+			<main>
+				<section id="about" class="section">
+					<h2 class="section-title">{t.about.title}</h2>
+					{t.about.paragraphs.map((p) => <p set:html={p} />)}
+				</section>
 
-			<p class="content-secondary">
-				<span>{t.contact}{' '}<a href="mailto:lucyan@outlook.com">lucyan@outlook.com</a></span>
-				<span>
-					{t.linkedin}{' '}
-					<a href="https://www.linkedin.com/in/lucyanpeixoto/" target="_blank" rel="noopener">Linkedin</a>
-				</span>
-			</p>
-		</main>
+				<section id="now" class="section">
+					<h2 class="section-title">{t.now.title}</h2>
+					<ul class="list">
+						{
+							t.now.items.map((item) => (
+								<li>
+									<a class="list-title" href={item.url} target="_blank" rel="noopener">
+										{item.name}
+									</a>
+									<span class="meta">{item.role}</span>
+								</li>
+							))
+						}
+					</ul>
+				</section>
+
+				<section id="contact" class="section">
+					<h2 class="section-title">{t.contact.title}</h2>
+					<p>
+						{t.contact.text}{' '}
+						<a href="mailto:lucyan@outlook.com">lucyan@outlook.com</a>.
+					</p>
+				</section>
+			</main>
+
+			<footer class="footer">
+				<Social size={20} />
+				<p class="meta">© {new Date().getFullYear()} {name}. {t.builtWith}.</p>
+			</footer>
+		</div>
 
 		<script is:inline>
 			document.querySelector('.theme-toggle').addEventListener('click', () => {
-				const theme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+				const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
 				document.documentElement.dataset.theme = theme;
 				try {
 					localStorage.setItem('theme', theme);
