@@ -26,13 +26,6 @@ export const content = {
 				'De União dos Palmares, Alagoas, para qualquer lugar onde boas ideias possam se transformar em produtos reais.',
 			],
 		},
-		now: {
-			title: 'Atualmente',
-			items: [
-				{ name: 'Doity', url: 'https://doity.com.br', role: 'Tech Lead' },
-				{ name: 'Integrabot.ai', url: 'https://integrabot.ai', role: 'Cofundador' },
-			],
-		},
 		contact: {
 			title: 'Contato',
 			text: 'Quer conversar sobre um projeto ou uma ideia? Me mande um e-mail em',
@@ -55,13 +48,6 @@ export const content = {
 				`I currently lead engineering initiatives at ${doity}, connecting technical decisions, product strategy and team development to turn complex challenges into reliable, efficient and scalable solutions.`,
 				`I'm also a co-founder of ${integrabot}, where I explore the potential of artificial intelligence to build products and automate business processes.`,
 				'From União dos Palmares, Alagoas, Brazil, to anywhere good ideas can become real products.',
-			],
-		},
-		now: {
-			title: 'Currently',
-			items: [
-				{ name: 'Doity', url: 'https://doity.com.br', role: 'Tech Lead' },
-				{ name: 'Integrabot.ai', url: 'https://integrabot.ai', role: 'Co-founder' },
 			],
 		},
 		contact: {

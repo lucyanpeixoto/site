@@ -56,7 +56,6 @@ const name = 'Lucyan Peixoto';
 				<Social />
 				<nav class="nav">
 					<a href="#about">{t.about.title}</a>
-					<a href="#now">{t.now.title}</a>
 					<a href="#contact">{t.contact.title}</a>
 					<a
 						class="chip"
@@ -82,22 +81,6 @@ const name = 'Lucyan Peixoto';
 				<section id="about" class="section">
 					<h2 class="section-title">{t.about.title}</h2>
 					{t.about.paragraphs.map((p) => <p set:html={p} />)}
-				</section>
-
-				<section id="now" class="section">
-					<h2 class="section-title">{t.now.title}</h2>
-					<ul class="list">
-						{
-							t.now.items.map((item) => (
-								<li>
-									<a class="list-title" href={item.url} target="_blank" rel="noopener">
-										{item.name}
-									</a>
-									<span class="meta">{item.role}</span>
-								</li>
-							))
-						}
-					</ul>
 				</section>
 
 				<section id="contact" class="section">
