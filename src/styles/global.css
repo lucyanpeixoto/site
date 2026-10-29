@@ -6,6 +6,7 @@
 
 :root {
 	--font-size-large: clamp(1.25rem, 0.9rem + 1.1vw, 1.875rem);
+	--font-size-medium: clamp(1rem, 0.94rem + 0.25vw, 1.125rem);
 	--font-size-small: clamp(0.875rem, 0.82rem + 0.2vw, 1rem);
 	--gutter: clamp(1.25rem, 4vw, 3rem);
 }
@@ -92,11 +93,26 @@ main {
 .content-primary {
 	grid-area: content;
 	align-self: center;
+	max-width: 40rem;
+}
+
+.content-primary p {
+	margin: 0 0 1em;
+	font-size: var(--font-size-medium);
+	line-height: 1.65;
+}
+
+.content-primary .content-lead {
+	margin-bottom: 1.25em;
 	max-width: 32ch;
-	margin: 0;
 	font-size: var(--font-size-large);
 	line-height: 1.35;
 	letter-spacing: -0.01em;
+}
+
+.content-primary .content-closing {
+	margin: 1.5em 0 0;
+	color: var(--color-muted);
 }
 
 .content-secondary {

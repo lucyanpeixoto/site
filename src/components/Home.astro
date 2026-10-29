@@ -57,10 +57,11 @@ const title = 'Lucyan Peixoto';
 
 			<h1 class="heading">{t.greeting}</h1>
 
-			<p class="content-primary">
-				{t.intro[0]}{' '}
-				<a href="https://doity.com.br" target="_blank" rel="noopener">Doity</a>{t.intro[1]}
-			</p>
+			<div class="content-primary">
+				<p class="content-lead">{t.lead}</p>
+				{t.paragraphs.map((p) => <p set:html={p} />)}
+				<p class="content-closing">{t.closing}</p>
+			</div>
 
 			<p class="content-secondary">
 				<span>{t.contact}{' '}<a href="mailto:lucyan@outlook.com">lucyan@outlook.com</a></span>
