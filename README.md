@@ -18,7 +18,7 @@ npm run preview  # serve o build localmente
 ## Estrutura
 
 ```
-public/            arquivos servidos como estão (favicon, robots.txt)
+public/            arquivos servidos como estão (favicon/logo, robots.txt)
 src/pages/         rotas: / (pt-BR) e /en/ (inglês)
 src/components/    Home.astro (página das duas línguas) e Social.astro (ícones)
 src/i18n.ts        textos em PT e EN
